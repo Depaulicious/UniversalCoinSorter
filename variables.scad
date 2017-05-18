@@ -19,8 +19,13 @@ if (debug) echo(can_arcs);
 if (debug) echo(can_angles);
 
 rot_radius = rot_circumf/(2*PI);
-ext_radius = rot_radius + can_diams[ncoins-1]/2 + can_thickn;
-int_radius = rot_radius - can_diams[ncoins-1]/2 - can_thickn;
+ext_radius_max = rot_radius + (can_diams[ncoins-1]/2) + can_thickn;
+ext_radius_min = rot_radius + (can_diams[0]/2) + can_thickn;
+int_radius_min = rot_radius - can_diams[ncoins-1]/2 - can_thickn;
+int_radius_max = rot_radius - can_diams[0]/2 - can_thickn;
+max_frame_thickn = ext_radius_max-int_radius_min;
+min_frame_thickn = ext_radius_min-int_radius_max;
+rad_scale = min_frame_thickn/max_frame_thickn;
 
 if (debug) echo(rot_circumf);
 if (debug) echo(rot_radius);
